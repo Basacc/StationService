@@ -2,23 +2,31 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace StationService.Classes
+namespace StationService
 {
-    class Pompe
+    enum Vehicule { Velomoteur, Camion, Autres}
+    class Pompe : Reparation
     {
-        string typeVehicule;
+        Vehicule vehicule;
         List<Pistolet> pistolets;
         bool panne;
 
-        public string TypeVehicule { get => typeVehicule; set => typeVehicule = value; }
         public bool Panne { get => panne; set => panne = value; }
         internal List<Pistolet> Pistolets { get => pistolets; set => pistolets = value; }
+        internal Vehicule Vehicule { get => vehicule; set => vehicule = value; }
 
-        public Pompe(string typeVehicule, bool panne, List<Pistolet> pistolets)
+        public Pompe(Vehicule vehicule, List<Pistolet> pistolets)
         {
-            TypeVehicule = typeVehicule;
-            Panne = panne;
+            Vehicule = vehicule;
             Pistolets = pistolets;
+        }
+
+        public void Reparer()
+        {
+            if (Panne == true)
+            {
+                Panne = false;
+            }
         }
     }
 }

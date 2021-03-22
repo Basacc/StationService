@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace StationService.Classes
+namespace StationService
 {
-    class Pistolet
+    class Pistolet : Reparation
     {
         Cuve cuve;
         bool panne;
@@ -12,15 +12,33 @@ namespace StationService.Classes
         public bool Panne { get => panne; set => panne = value; }
         internal Cuve Cuve { get => cuve; set => cuve = value; }
 
-        public Pistolet(bool panne, Cuve cuve)
+        public Pistolet(Cuve cuve)
         {
-            Panne = panne;
             Cuve = cuve;
         }
 
-        public void Approvisionner()
+        public float Approvisionner(float quantite)
         {
+            if (cuve.Contenance > cuve.SeuilApprovisionnement && quantite < cuve.Contenance && cuve.EnCoursDeRemplissage == false 
+                && cuve.ProblemeDistribution == false  && Panne == false)
+            {
+                cuve.Contenance -= quantite;
+                float prix = cuve.PrixCarburant * quantite;
+                if (cuve.Contenance <= cuve.SeuilRemplissage)
+                {
+                    cuve.CommanderCarburant();
+                }
+                return prix;
+            }
+            return 0;
+        }
 
+        public void Reparer()
+        {
+            if (Panne == true)
+            {
+                Panne = false;
+            }
         }
     }
 }
