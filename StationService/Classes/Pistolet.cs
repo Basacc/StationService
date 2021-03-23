@@ -40,5 +40,15 @@ namespace StationService
                 Panne = false;
             }
         }
+
+        public void TomberEnPanne()
+        {
+            Random rng = new Random();
+            int nbr = rng.Next(0, 10);
+            if (nbr == 5)
+            {
+                Panne = true;
+            }
+        }
     }
 }

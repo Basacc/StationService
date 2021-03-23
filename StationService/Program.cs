@@ -7,7 +7,7 @@ namespace StationService
     {
         static void Main(string[] args)
         {
-            Cuve cuve = new Cuve(Carburant.Diesel, 10000, 0, 150, 50, 1.34f);
+            Cuve cuve = new Cuve(Carburant.Diesel, 10000, 0, 1.34f);
             Pistolet pistolet = new Pistolet(cuve);
             List<Pistolet> pistolets = new List<Pistolet>();
             pistolets.Add(pistolet);

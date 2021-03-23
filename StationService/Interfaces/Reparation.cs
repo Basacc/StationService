@@ -7,5 +7,6 @@ namespace StationService
     interface Reparation
     {
         void Reparer();
+        void TomberEnPanne();
     }
 }
