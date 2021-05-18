@@ -58,7 +58,7 @@ namespace StationService
         public void TomberEnPanne()
         {
             Random rng = new Random();
-            int nbr = rng.Next(0, 10);
+            int nbr = rng.Next(0, 100);
             if (nbr == 5)
             {
                 ProblemeDistribution = true;
