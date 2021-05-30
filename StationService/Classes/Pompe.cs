@@ -23,7 +23,7 @@ namespace StationService
 
         public float Approvisionner(Pistolet pistolet, float quantite)
         {
-            //Retire une quantité de carburant de la cuve via un pistolet et retourne le prix
+            //Retire si possible une quantité de carburant de la cuve via un pistolet et retourne le prix
             if (pistolet.Cuve.EnCoursDeRemplissage)
             {
                 Console.WriteLine("Cuve en cours de remplissage, réessayez plus tard...");
@@ -34,21 +34,37 @@ namespace StationService
             pistolet.Cuve.TomberEnPanne();
             TomberEnPanne();
 
-            if (pistolet.Cuve.Contenance > pistolet.Cuve.SeuilApprovisionnement && quantite < pistolet.Cuve.Contenance 
-                && pistolet.Cuve.EnCoursDeRemplissage == false && pistolet.Cuve.ProblemeDistribution == false && Panne == false)
+            if (pistolet.Cuve.ProblemeDistribution == false && Panne == false && pistolet.Panne == false)
             {
-                pistolet.Cuve.Contenance -= quantite;
-                float prix = pistolet.Cuve.PrixCarburant * quantite;
                 if (pistolet.Cuve.Contenance <= pistolet.Cuve.SeuilRemplissage)
                 {
                     pistolet.Cuve.CommanderCarburant();
                 }
+                if (quantite > pistolet.Cuve.Contenance - pistolet.Cuve.SeuilApprovisionnement)
+                {
+                    Console.WriteLine("Quantité sélectionnée trop élevée");
+                    pistolet.Cuve.CommanderCarburant();
+                    return 0;
+                }
+                pistolet.Cuve.Contenance -= quantite;
+                float prix = pistolet.Cuve.PrixCarburant * quantite;
                 return prix;
             }
-            Console.WriteLine("Hors service");
-            pistolet.Reparer();
-            this.Reparer();
-            pistolet.Cuve.Reparer();
+            if (pistolet.Panne)
+            {
+                pistolet.Reparer();
+                Console.WriteLine("Pistolet hors service");
+            }
+            if (pistolet.Cuve.ProblemeDistribution)
+            {
+                pistolet.Cuve.Reparer();
+                Console.WriteLine("Cuve hors service");
+            }
+            if (this.Panne)
+            {
+                this.Reparer();
+                Console.WriteLine("Pompe hors service");
+            }
             return 0;
         }
 

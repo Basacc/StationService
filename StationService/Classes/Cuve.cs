@@ -40,12 +40,11 @@ namespace StationService
 
         public void CommanderCarburant()
         {
-            // Remplissage de la cuve lorsque le seuil de remplissage est atteint
-            if (Contenance <= SeuilRemplissage)
-            {
-                EnCoursDeRemplissage = true;
-                Contenance = ContenanceMax;
-            }
+            // Remplissage de la cuve
+
+            EnCoursDeRemplissage = true;
+            Contenance = ContenanceMax;
+
         }
 
         public void Reparer()

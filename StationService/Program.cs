@@ -10,84 +10,22 @@ namespace StationService
             Pompe pompeCamion, pompeVoiture, pompeVelomoteur;
             Init(out pompeCamion, out pompeVoiture, out pompeVelomoteur);
 
-            while (true)
-            {
-                Console.Clear();
-                Console.WriteLine("Sélectionner pompe (c/v/vm)");
-                Pompe selectedPompe = SelectPompe(Console.ReadLine());
-                if (selectedPompe == null)
-                {
-                    Console.ReadLine();
-                    continue;
-                }
-                Console.Clear();
-                Console.WriteLine("Sélectionner carburant: ");
-                AfficherCarburant(selectedPompe);
-                Pistolet selectedPistolet = SelectPistolet(Console.ReadLine(), selectedPompe);
-                if (selectedPistolet == null)
-                {
-                    Console.ReadLine();
-                    continue;
-                }
-                Console.Clear();
-                Console.WriteLine("Entrez quantité(litres): ");
-                string quantite = Console.ReadLine();
-                if (Int32.TryParse(quantite, out int quantiteint))
-                {
-                    Console.WriteLine("A payer: " + selectedPompe.Approvisionner(selectedPistolet, quantiteint).ToString());
-                    Console.ReadLine();
-                }
-                else
-                {
-                    Console.WriteLine("Entree invalide");
-                    continue;
-                }
-                Console.Clear();
-            }
-
-            Pompe SelectPompe(string input)
-            {
-                if (input == "c")
-                {
-                    return pompeCamion;
-                }
-                else if (input == "v")
-                {
-                    return pompeVoiture;
-                }
-                else if (input == "vm")
-                {
-                    return pompeVelomoteur;
-                }
-                else
-                {
-                    Console.WriteLine("Entree invalide");
-                    return null;
-                }
-            }
-
-            void AfficherCarburant(Pompe pompe)
-            {
-                int cpt = 0;
-                foreach (var pistolet in pompe.Pistolets)
-                {
-                    Console.WriteLine(cpt.ToString() + ": " + pistolet.Cuve.Carburant.ToString());
-                    cpt++;
-                }
-            }
-
-            Pistolet SelectPistolet(string input, Pompe pompe)
-            {
-                try
-                {
-                    return pompe.Pistolets[Int32.Parse(input)];
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Erreur, selection invalide");
-                    return null;
-                }
-            }
+            Console.WriteLine(pompeCamion.Approvisionner(pompeCamion.Pistolets[0], 2000));
+            Console.WriteLine(pompeCamion.Approvisionner(pompeCamion.Pistolets[0], 2000));
+            Console.WriteLine(pompeCamion.Approvisionner(pompeCamion.Pistolets[0], 2000));
+            Console.WriteLine(pompeCamion.Approvisionner(pompeCamion.Pistolets[0], 2000));
+            Console.WriteLine(pompeCamion.Approvisionner(pompeCamion.Pistolets[0], 2000));
+            Console.WriteLine(pompeCamion.Approvisionner(pompeCamion.Pistolets[0], 2000));
+            Console.WriteLine(pompeCamion.Approvisionner(pompeCamion.Pistolets[0], 2000));
+            Console.WriteLine(pompeCamion.Approvisionner(pompeCamion.Pistolets[0], 2000));
+            Console.WriteLine(pompeCamion.Approvisionner(pompeCamion.Pistolets[0], 2000));
+            Console.WriteLine(pompeCamion.Approvisionner(pompeCamion.Pistolets[0], 2000));
+            Console.WriteLine(pompeCamion.Approvisionner(pompeCamion.Pistolets[0], 2000));
+            Console.WriteLine(pompeCamion.Approvisionner(pompeCamion.Pistolets[0], 2000));
+            Console.WriteLine(pompeCamion.Approvisionner(pompeCamion.Pistolets[0], 2000));
+            Console.WriteLine(pompeCamion.Approvisionner(pompeCamion.Pistolets[0], 2000));
+            Console.ReadLine();
+            
 
             void Init(out Pompe pompeCamion, out Pompe pompeVoiture, out Pompe pompeVelomoteur)
             {
