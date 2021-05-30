@@ -23,6 +23,7 @@ namespace StationService
 
         public float Approvisionner(Pistolet pistolet, float quantite)
         {
+            //Retire une quantité de carburant de la cuve via un pistolet et retourne le prix
             if (pistolet.Cuve.EnCoursDeRemplissage)
             {
                 Console.WriteLine("Cuve en cours de remplissage, réessayez plus tard...");
@@ -61,6 +62,7 @@ namespace StationService
 
         public void TomberEnPanne()
         {
+            // la pompe tombe en panne de manière aléatoire
             Random rng = new Random();
             int nbr = rng.Next(0, 30);
             if (nbr == 5)

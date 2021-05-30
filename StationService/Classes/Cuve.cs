@@ -40,6 +40,7 @@ namespace StationService
 
         public void CommanderCarburant()
         {
+            // Remplissage de la cuve lorsque le seuil de remplissage est atteint
             if (Contenance <= SeuilRemplissage)
             {
                 EnCoursDeRemplissage = true;
@@ -57,6 +58,7 @@ namespace StationService
 
         public void TomberEnPanne()
         {
+            // un problème de distribution peut survenir aléatoirement
             Random rng = new Random();
             int nbr = rng.Next(0, 100);
             if (nbr == 5)
