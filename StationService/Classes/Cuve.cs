@@ -4,11 +4,11 @@ using System.Text;
 
 namespace StationService
 {
-    enum Carburant
+    public enum Carburant
     {
         LPG, Euro95, Euro98, Diesel, melange2Temps
     }
-    class Cuve : Reparation
+    public class Cuve : Reparation
     {
         float contenanceMax;
         float contenance;

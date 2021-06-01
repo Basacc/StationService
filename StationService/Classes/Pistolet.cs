@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StationService
 {
-    class Pistolet : Reparation
+    public class Pistolet : Reparation
     {
         Cuve cuve;
         bool panne;

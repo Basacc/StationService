@@ -4,8 +4,8 @@ using System.Text;
 
 namespace StationService
 {
-    enum Vehicule { Velomoteur, Camion, Autres}
-    class Pompe : Reparation
+    public enum Vehicule { Velomoteur, Camion, Autres}
+    public class Pompe : Reparation
     {
         Vehicule vehicule;
         List<Pistolet> pistolets;
